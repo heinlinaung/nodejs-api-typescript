@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import config from "config";
 
 export interface IUser extends mongoose.Document {
-  username: string;
+  name: string;
   password: string;
   email: string;
   createdAt: Date;
@@ -12,12 +12,9 @@ export interface IUser extends mongoose.Document {
 }
 
 const userSchema = new mongoose.Schema({
-  username: {
+  name: {
     type: String,
     required: true,
-    unique: true,
-    minlength: 3,
-    maxlength: 20,
   },
   password: {
     type: String,
@@ -51,6 +48,6 @@ userSchema.methods.comparePassword = async function (candidatePassword: string):
 };
 
 
-const UserModel = mongoose.model("User", userSchema)
+const UserModel = mongoose.model<IUser>("User", userSchema)
 
 export default UserModel;
