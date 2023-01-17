@@ -7,6 +7,7 @@ import path from 'path';
 import glob from 'glob';
 
 const app = express();
+app.use(express.json())
 const port = config.get<number>('port');
 
 app.listen(port, async () => {
