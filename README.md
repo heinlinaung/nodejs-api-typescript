@@ -1,0 +1,1 @@
+## For the purpose to learn typescript in Node.js Project
