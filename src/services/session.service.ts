@@ -12,3 +12,7 @@ export async function createSession(userId: string, userAgent: string) {
 export async function findUserSessions(query: FilterQuery<ISession>) {
   return await SessionModel.find(query).lean()
 }
+
+export async function deleteUserSession(query: FilterQuery<ISession>, update: FilterQuery<ISession>) {
+  return await SessionModel.updateOne(query, update)
+}
