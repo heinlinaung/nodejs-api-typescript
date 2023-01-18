@@ -5,9 +5,11 @@ import connect from './utils/connect';
 import logger from './utils/logger';
 import path from 'path';
 import glob from 'glob';
+import deserializedUser from './middlewares/deserializedUser';
 
 const app = express();
 app.use(express.json())
+app.use(deserializedUser)
 const port = config.get<number>('port');
 
 app.listen(port, async () => {
